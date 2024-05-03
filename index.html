@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpeedTask1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/11aa62c576.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            
+            <div class="col-12">
+                <div class="head-cont d-flex flex-row justify-content-between align-items-center pt-3 px-4">
+                    <div class="d-flex">
+                        <i class="fa-solid fa-sack-dollar fa-2xl bag-icon mt-3"></i>
+                        <p class="headr-para ps-3">Spend Wise</p>
+                    </div>
+                    <div class="pe-2">
+                        <p class="profile d-flex flex-row justify-content-center align-items-center rounded-circle">MA</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="px-4 pt-4 d-flex justify-content-between">
+                    <div>
+                        <p class="headr-monthyear">February 2024 <span><i class="fa-regular fa-calendar ps-2"></i></span></p>
+                    </div>
+                    <div>
+                        <p class="headr-amount pe-2"><span class="total pe-2">Total </span>&#x20B9; 39,577.00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3 card d-flex flex-column justify-content-center align-items-center ms-4 addcard-bg-clr cards-cont mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div>
+                    <i class="fa-solid fa-circle-plus ps-4"></i>
+                    <p class="add-bill pt-2">Add Bills</p>
+                </div>
+            </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content px-4 py-3 rounded-0">
+                            <form id="form1" name="modalForm" onsubmit="validate()">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-4" id="exampleModalLabel">Add Bill</h1>
+                                    <button type="button" class="btn-close rounded-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body px-0">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="dropdown col-sm-12 col-md-6">
+                                                <p class="modl-headings">Type</p>
+                                                <button class="btn btn-secondary dropdown-toggle bg-transparent text-dark px-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa-solid fa-wifi pe-3"></i><span class="pe-5 drop-content fw-semibold">Internet</span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Landline</a></li>
+                                                <li><a class="dropdown-item" href="#">Electricity</a></li>
+                                                <li><a class="dropdown-item" href="#">Water</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="d-flex flex-column col-sm-12 col-md-6">
+                                                <label class="modl-headings mt-3 mt-md-0" for="modal-date-value">Date</label>
+                                                <input id="modal-date-value" class="date-input px-3 py-2 mt-3" type="date">
+                                                <span id="modal-date-error" class="text-danger fw-medium fs-6 pt-0"></span>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="modal-shop-value" class="pt-3 modl-headings">Shop/Company/Person</label>
+                                                <input id="modal-shop-value" class="custom-placeholder w-100 px-3 py-2 mt-3 mb-0 modl-input-text-cont fw-semibold" type="text" placeholder="Enter Your Shop/Company/Person">
+                                                <span class="text-danger fw-medium fs-6 pt-0" id="shopError"></span>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="modal-desc" class="modl-headings pb-3 mt-3">Description</label>
+                                                <input id="modal-desc" class="custom-placeholder w-100 px-3 pt-2 pb-5 modl-input-text-cont fw-semibold" type="text" placeholder="Enter Description">
+                                                <span id="modal-desc-error" class="text-danger fw-medium fs-6 pt-0"></span>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <p class="pt-4 modl-headings">Amount</p>
+                                                <div class="d-flex flex-row align-items-center modl-input-text-cont col-8 col-md-6">
+                                                    <p class="pop-amount px-3 mb-0 d-flex justify-content-center align-items-center"><i class="fa-solid fa-indian-rupee-sign text-light"></i></p>
+                                                    <input id="modal-amount-value" placeholder="Enter Amount" class="custom-placeholder text-end modal-amount-input pe-2 fs-5 fw-medium" type="text">
+                                                </div>
+                                                <span id="modal-amount-error" class="text-danger fw-medium fs-6 pt-0"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer pe-0">
+                                    <button type="button" class="btn md-close-btn btn-secondary bg-transparent px-3 " data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn md-save-btn btn-primary px-4 ms-3">Save</button>
+                                </div>
+                            </form>
+                            <div class="bg-info text-dark p-3 fs-4" id="successMessage" style="display: none;">Form submitted successfully!</div>
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="col-3 card  d-flex flex-row ms-4 mt-3 px-0 groc-card-cont cards-cont">
+                <div class="d-flex flex-column justify-content-between groc-bg-clr left-card px-3 py-2">
+                    <p>Groceries</p>
+                    <div><i class="fa-solid fa-cow pe-2"></i><i class="fa-solid fa-apple-whole"></i><i class="fa-solid fa-drumstick-bite ps-2"></i></div>
+                    <p class="card-items">Milk, Meat, Fruits and Vegetable etc</p>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center right-card">
+                    <p class="card-total-para pe-5 mb-0">Total Spend</p>
+                    <p class="groc-amount-clr card-amount-fonts">&#x20B9; 4,678.00</p>
+                </div>
+            </div>
+
+            <div class="col-3 card  d-flex flex-row ms-4 mt-3 px-0 trans-card-cont cards-cont">
+                <div class="d-flex flex-column justify-content-between trans-card-bg left-card px-3 py-2">
+                    <p>Transportation</p>
+                    <div><i class="fa-solid fa-gas-pump pe-2"></i><i class="fa-solid fa-bus"></i><i class="fa-solid fa-train ps-2"></i></div>
+                    <p class="card-items">Fuel, Bus, Train etc</p>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center right-card">
+                    <p class="card-total-para pe-5 mb-0">Total Spend</p>
+                    <p class="trans-amount-clr card-amount-fonts">&#x20B9; 8,675.00</p>
+                </div>
+            </div>
+
+            <div class="col-3 card  d-flex flex-row ms-4 mt-3 px-0 food-card-cont cards-cont">
+                <div class="d-flex flex-column justify-content-between food-card-bg left-card px-3 py-2">
+                    <p>Food</p>
+                    <div><i class="fa-solid fa-burger pe-2"></i><i class="fa-solid fa-bottle-droplet"></i><i class="fa-solid fa-fish ps-2"></i></div>
+                    <p class="card-items">Dineout, Swiggy, Zomato etc</p>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center right-card">
+                    <p class="card-total-para pe-5 mb-0">Total Spend</p>
+                    <p class="food-amount-clr card-amount-fonts">&#x20B9; 5,375.00</p>
+                </div>
+            </div>
+
+            <div class="col-3 card  d-flex flex-row ms-4 mt-3 px-0 fun-card-cont mt-4 cards-cont">
+                <div class="d-flex flex-column justify-content-between fun-card-bg left-card px-3 py-2">
+                    <p>Fun</p>
+                    <div><i class="fa-solid fa-film pe-2"></i><i class="fa-solid fa-location-dot"></i><i class="fa-solid fa-fire ps-2"></i></div>
+                    <p class="card-items">Leisure and other Fun activities</p>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center right-card">
+                    <p class="card-total-para pe-5 mb-0">Total Spend</p>
+                    <p class="fun-amount-clr card-amount-fonts">&#x20B9; 3,879.00</p>
+                </div>
+            </div>
+
+            <div class="col-3 card  d-flex flex-row ms-4 mt-3 px-0 health-card-cont mt-4 cards-cont">
+                <div class="d-flex flex-column justify-content-between health-card-bg left-card px-3 py-2">
+                    <p>Healthcare</p>
+                    <div><i class="fa-solid fa-stethoscope pe-2"></i><i class="fa-solid fa-syringe"></i><i class="fa-solid fa-circle-h ps-2"></i></div>
+                    <p class="card-items">Medical Insurance, Doctor Visits etc</p>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center right-card">
+                    <p class="card-total-para pe-5 mb-0">Total Spend</p>
+                    <p class="health-amount-clr card-amount-fonts ps-1">&#x20B9; 12,879.00</p>
+                </div>
+            </div>
+
+            <a class="col-3 card  d-flex flex-row ms-4 mt-3 px-0 uti-card-cont mt-4 cards-cont text-decoration-none" href="utilities.html">
+                <div class="d-flex flex-column justify-content-between uti-card-bg left-card px-3 py-2">
+                    <p>Utilities</p>
+                    <div><i class="fa-solid fa-wifi pe-2"></i><i class="fa-regular fa-lightbulb"></i><i class="fa-solid fa-droplet ps-2"></i></div>
+                    <p class="card-items">Internet, Electricity, Water, Gas etc</p>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center right-card">
+                    <p class="card-total-para pe-5 mb-0">Total Spend</p>
+                    <p class="uti-amount-clr card-amount-fonts">&#x20B9; 3,879.00</p>
+                </div>
+            </a>
+
+            <div class="col-3 card  d-flex flex-row ms-4 mt-3 px-0 misc-card-cont mt-4 cards-cont">
+                <div class="d-flex flex-column justify-content-between misc-card-bg left-card px-3 py-2">
+                    <p>Misc</p>
+                    <div><i class="fa-solid fa-list-check pe-2"></i><i class="fa-regular fa-credit-card"></i><i class="fa-solid fa-wallet ps-2"></i></div>
+                    <p class="card-items">Any other spending you may have</p>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center right-card">
+                    <p class="card-total-para pe-5 mb-0">Total Spend</p>
+                    <p class="misc-amount-clr card-amount-fonts pe-3">&#x20B9; 230.00</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpeedTask1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/11aa62c576.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-12">
+                <div class="head-cont d-flex flex-row justify-content-between align-items-center pt-3 px-4">
+                    <div class="d-flex">
+                        <i class="fa-solid fa-sack-dollar fa-2xl bag-icon mt-3"></i>
+                        <p class="headr-para ps-3">Spend Wise</p>
+                    </div>
+                    <div class="pe-2">
+                        <p class="profile d-flex flex-row justify-content-center align-items-center rounded-circle">MA</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 px-4 mt-3">
+                <a href="index.html" class="text-decoration-none text-dark fw-medium">
+                    <i class="fa-solid fa-arrow-left me-1"></i> Back
+                </a>
+            </div>
+
+            <div class="col-12 px-4 mt-4">
+                <p class="text-dark fw-medium mb-0">February 2024</p>
+                <div class="d-flex flex-row justify-content-between align-items-end">  
+                    <p class="card-dtls-headr-para mb-0 fw-medium">Utilities <span class="total px-3">Total</span> &#x20B9; 3,879.00</p>
+                    <button id="defaultModal" class="uti-add-btn text-light px-3 py-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Bills</button>
+
+                    <div class="col-12 modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content px-4 py-3 rounded-0">
+                          <form id="form1" name="modalForm" onsubmit="validate()">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-4" id="exampleModalLabel">Add Bill</h1>
+                              <button type="button" class="btn-close rounded-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body px-0">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="dropdown col-7 col-sm-6  pe-3">
+                                            <p class="modl-headings">Type</p>
+                                            <button class="btn w-100  btn-secondary dropdown-toggle bg-transparent text-dark px-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <span id="icons"><i class="fa-solid fa-wifi pe-3"></i></span><span id="billType" class="pe-5 drop-content fw-semibold">Internet</span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Landline</a></li>
+                                            <li><a class="dropdown-item" href="#">Electricity</a></li>
+                                            <li><a class="dropdown-item" href="#">Water</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="d-flex flex-column col-sm-12 col-md-6">
+                                            <label class="modl-headings mt-3 mt-md-0" for="modal-date-value">Date</label>
+                                            <input id="modal-date-value" class="date-input px-3 py-2 mt-3" type="date">
+                                            <span id="modal-date-error" class="text-danger fw-medium fs-6 pt-0"></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="modal-shop-value" class="pt-3 modl-headings">Shop/Company/Person</label>
+                                            <input id="modal-shop-value" class="custom-placeholder w-100 px-3 py-2 mt-3 mb-0 modl-input-text-cont fw-semibold" type="text" placeholder="Enter Your Shop/Company/Person">
+                                            <span class="text-danger fw-medium fs-6 pt-0" id="shopError"></span>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="modal-desc" class="modl-headings pb-3 mt-3">Description</label>
+                                            <input id="modal-desc" class="custom-placeholder w-100 px-3 pt-2 pb-5 modl-input-text-cont fw-semibold" type="text" placeholder="Enter Description">
+                                            <span id="modal-desc-error" class="text-danger fw-medium fs-6 pt-0"></span>
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <p class="pt-4 modl-headings">Amount</p>
+                                            <div class="d-flex flex-row align-items-center modl-input-text-cont col-8 col-md-6">
+                                                <p class="pop-amount px-3 mb-0 d-flex justify-content-center align-items-center"><i class="fa-solid fa-indian-rupee-sign text-light"></i></p>
+                                                <input id="modal-amount-value" placeholder="Enter Amount" class="custom-placeholder text-end modal-amount-input pe-2 fs-5 fw-medium" type="text">
+                                            </div>
+                                            <span id="modal-amount-error" class="text-danger fw-medium fs-6 pt-0"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer pe-0">
+                              <button type="button" class="btn md-close-btn btn-secondary bg-transparent px-3 " data-bs-dismiss="modal">Close</button>
+                              <button type="submit" class="btn md-save-btn btn-primary px-4 ms-3">Save</button>
+                            </div>
+                          </form>
+                          <div class="bg-success text-light p-3 fs-4" id="successMessage" style="display: none;">Form submitted successfully!</div>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-12 px-4 mt-5">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col"></th>
+                        <th class="tble-headings" scope="col">Bill No</th>
+                        <th class="tble-headings" scope="col">Date</th>
+                        <th class="tble-headings" scope="col">Shop/Company/Person</th>
+                        <th class="tble-headings" scope="col">Description</th>
+                        <th class="tble-headings" scope="col">Amount</th>
+                        <th class="tble-headings" scope="col"></th>
+                        <th class="tble-headings" scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"><i class="fa-solid fa-wifi"></i></th>
+                        <td class="fw-medium">B234567/2024</td>
+                        <td class="fw-medium">01 Feb 2024</td>
+                        <td class="fw-medium">BSNL Communication</td>
+                        <td class="fw-medium">Internet, Cable and landline</td>
+                        <td class="fw-medium">&#x20B9; 590.00</td>
+                        <td id="iconButton0" class="fw-medium"><i class="fa-solid fa-pen" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></td>
+                        <td class="fw-medium"><i class="fa-solid fa-trash"></i></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><i class="fa-regular fa-lightbulb"></i></th>
+                        <td class="fw-medium">KS786799</td>
+                        <td class="fw-medium">05 Feb 2024</td>
+                        <td class="fw-medium">KSEB LTD</td>
+                        <td class="fw-medium">Electricity Bill</td>
+                        <td class="fw-medium">&#x20B9; 2,360.00</td>
+                        <td id="iconButton" class="fw-medium"><i class="fa-solid fa-pen" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></td>
+                        <td class="fw-medium"><i class="fa-solid fa-trash"></i></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><i class="fa-solid fa-droplet"></i></th>
+                        <td class="fw-medium">KW3467899</td>
+                        <td class="fw-medium">07 Feb 2024</td>
+                        <td class="fw-medium">Kerala State Water Authority</td>
+                        <td class="fw-medium">Water Bill</td>
+                        <td class="fw-medium">&#x20B9; 800.00</td>
+                        <td id="iconButton1" class="fw-medium"><i class="fa-solid fa-pen" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></td>
+                        <td class="fw-medium"><i class="fa-solid fa-trash"></i></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><i class="fa-regular fa-lightbulb"></i></th>
+                        <td class="fw-medium">KS786978</td>
+                        <td class="fw-medium">15 Feb 2024</td>
+                        <td class="fw-medium">KSEB LTD</td>
+                        <td class="fw-medium">Additional Electricity Bill</td>
+                        <td class="fw-medium">&#x20B9; 129.00</td>
+                        <td id="iconButton2" class="fw-medium"><i class="fa-solid fa-pen" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></td>
+                        <td class="fw-medium"><i class="fa-solid fa-trash"></i></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+        </div>
+    </div> 
+    <script src="index.js"></script>  
+</body>
+</html>
